@@ -30,6 +30,6 @@ public class Items {
     }
     @Override
     public int hashCode(){
-        return 32;
+        return name.hashCode();
     }
 }
