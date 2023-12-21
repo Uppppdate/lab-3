@@ -1,5 +1,6 @@
 package Actions;
+import Objects.Trees;
 
 public interface Rustling {
-    String toRustle();
+    String toRustle(Trees obj);
 }

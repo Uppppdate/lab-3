@@ -13,6 +13,7 @@ public class Main{
         Luis Luis = new Luis(Names.LUIS);
         Carl Carl = new Carl(Names.CARL);
         Wind wind = new Wind("Wind");
+        Trees trees = new Trees("Trees");
         Flashlight flashlight = new Flashlight("flashlight");
         Gloves gloves = new Gloves("gloves");
         Pickaxe pickaxe = new Pickaxe("pickaxe");
@@ -29,12 +30,9 @@ public class Main{
         Crypta crypta = new Crypta("Crypta");
         Coffin coffin = new Coffin("Coffin");
         //Сюжет
-        System.out.print(
-                wind.toBlow() +
-                wind.toRustle() +
-                wind.toForce(Luis) +
-                Luis.toLookBehind(Feelings.ANXIETY)
-        );
+        System.out.print(wind.toBlow());
+        System.out.print(wind.toRustle(trees));
+        System.out.print(wind.toForce(Luis));
         Luis.toTie(showel, pickaxe, gloves, flashlight);
         System.out.print(flashlight.beNeeded(Luis));
         System.out.print(Luis.toGo("the same way and five minutes later approached a high ", ironFence));
@@ -55,6 +53,11 @@ public class Main{
         System.out.print(crypta.toLoom());
         System.out.print(coffin.getName() + "s were placed here in winter, when it was too cold to dig graves,\nand also when there were too many of them.\n");
         System.out.print(Luis.toKnow(people));
-        System.out.print(Carl.toSayTo(": \"Everything balances out\"", Luis));
+        System.out.print (Carl.toSayTo(": \"Everything balances out\"", Luis));
     }
 }
+
+
+
+
+

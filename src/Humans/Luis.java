@@ -2,7 +2,6 @@ package Humans;
 
 import Actions.*;
 import Objects.Items.Items;
-import Objects.Piles_Of_Flowers;
 import Objects.Pit;
 
 public class Luis extends Human implements Tieing, Going, Looking, Trembling, Able_To_Hope, Able_To_Know, Able_To_Look_Behind, Able_To_Look_Away{
@@ -57,14 +56,14 @@ public class Luis extends Human implements Tieing, Going, Looking, Trembling, Ab
     public String toKnow(Object obj) {
         return name + " knew that always be a periods when too many " + obj + " have die\n";
     }
-@Override
+    @Override
     public String toLookBehind(Feelings feelings){
         if (feelings == Feelings.NORMAL)
-            return name + " looked back \n";
+            return " look back \n";
         if (feelings == Feelings.HYPNOTIZED)
-            return name + " looked back as if he was " + feelings.getName() + "\n";
+            return " look back as if he was " + feelings.getName() + "\n";
         if (feelings == Feelings.ANXIETY)
-            return name + " looked back with " + feelings.getName() + "\n";
+            return " look back with " + feelings.getName() + "\n";
         return null;
     }
     @Override
