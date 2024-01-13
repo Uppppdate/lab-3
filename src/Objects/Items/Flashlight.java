@@ -4,9 +4,13 @@ import Actions.BeNeeded;
 import Humans.Human;
 
 public class Flashlight extends Items implements BeNeeded{
-    private boolean isNeeded = false;
+    private boolean isNeeded;
     public Flashlight(String name){
         super(name);
+    }
+    public Flashlight(String name, boolean isNeeded){
+        super(name);
+        this.isNeeded=isNeeded;
     }
     public String beNeeded(Human human){
         if(isNeeded){

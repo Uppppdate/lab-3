@@ -4,7 +4,6 @@ public class Items {
     public void setIsTied(boolean isTied) {
         this.isTied = isTied;
     }
-
     private boolean isTied;
     private String name;
     public Items(String name){

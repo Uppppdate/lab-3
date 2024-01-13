@@ -4,13 +4,15 @@ import Actions.*;
 import Objects.Items.Items;
 import Objects.Pit;
 
-public class Luis extends Human implements Tieing, Going, Looking, Trembling, Able_To_Hope, Able_To_Know, Able_To_Look_Behind, Able_To_Look_Away{
-
+public class Luis extends Human implements Tieing, Going, Looking, Trembling, Able_To_Hope, Able_To_Know {
     private Feelings feelings = Feelings.NORMAL;
     public Memory memory;
     public Luis(Names name){
         super(name);
         memory = new Memory("Memory");
+    }
+    public void setFeelings(Feelings feelings) {
+        this.feelings = feelings;
     }
     public void toTie(Items... items){
         System.out.printf("%s tied ", name);
@@ -27,21 +29,37 @@ public class Luis extends Human implements Tieing, Going, Looking, Trembling, Ab
         return name + " went " + description + object + "\n";
     }
 
-    public String toLook(Object obj){
-        if(feelings==Feelings.HYPNOTIZED){
-            return name + " looked at " + obj + " as if " + feelings.getName() + "\n";
+    public String toLook(Object obj, ViewDirections directions) {
+        if (directions == ViewDirections.STRAIGHT) {
+            if (feelings == Feelings.HYPNOTIZED) {
+                return name + " looked at " + obj + " as if " + feelings.getName() + "\n";
+            }
+            if (obj instanceof Pit){
+                if (!((Pit)obj).isEmpty()) {
+                this.feelings = Feelings.HYPNOTIZED;
+                return name + " looked at " + obj + toTremble();
+                }
+                else {
+                    this.feelings = Feelings.NORMAL;
+                    return name + " looked at " + obj;
+                }
+            }
+            else return name + " looked at " + obj + "\n";
         }
-        if(obj instanceof Pit){
-            this.feelings = Feelings.HYPNOTIZED;
-            return name + " looked at " + obj + toTremble();
+        if (directions== ViewDirections.BEHIND){
+            if (feelings == Feelings.NORMAL)
+                return " look back \n";
+            if (feelings == Feelings.HYPNOTIZED)
+                return " look back as if he was " + feelings.getName() + "\n";
+            if (feelings == Feelings.ANXIETY)
+                return " look back with " + feelings.getName() + "\n";
+            return null;
         }
-        return name + " looked at " + obj + "\n";
-    }
-
-    @Override
-    public String lookAway() {
-        feelings=Feelings.NORMAL;
-        return "finally " + name + " looked away with a slight sigh\n";
+        if (directions== ViewDirections.AWAY){
+            feelings=Feelings.NORMAL;
+            return "finally " + name + " looked away with a slight sigh\n";
+        }
+        return null;
     }
 
     @Override
@@ -55,16 +73,6 @@ public class Luis extends Human implements Tieing, Going, Looking, Trembling, Ab
     @Override
     public String toKnow(Object obj) {
         return name + " knew that always be a periods when too many " + obj + " have die\n";
-    }
-    @Override
-    public String toLookBehind(Feelings feelings){
-        if (feelings == Feelings.NORMAL)
-            return " look back \n";
-        if (feelings == Feelings.HYPNOTIZED)
-            return " look back as if he was " + feelings.getName() + "\n";
-        if (feelings == Feelings.ANXIETY)
-            return " look back with " + feelings.getName() + "\n";
-        return null;
     }
     @Override
     public String toString(){
