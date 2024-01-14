@@ -1,12 +1,16 @@
 package Objects;
 
 import Actions.Looming;
+import Coordinates.Coordinates;
+import Coordinates.Map;
 
 public class Crypta implements Looming{
     private String name;
+    private Coordinates coordinates;
 
-    public Crypta(String name) {
+    public Crypta(String name, int x, int y) {
         this.name = name;
+        coordinates = Map.setCoordinatesOfObject(this, x, y);
     }
     @Override
     public String toString(){

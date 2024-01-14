@@ -22,7 +22,7 @@ public class Items {
     }
     @Override
     public boolean equals(Object object){
-        if(object instanceof Items){
+        if(object.hashCode() == this.hashCode()){
             return true;
         }
         return false;

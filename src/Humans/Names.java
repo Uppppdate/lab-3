@@ -2,7 +2,7 @@ package Humans;
 
 public enum Names {
     RACHEL("Rachel"),
-    LUIS("Luis"),
+    LUIS("Luis  "),
     CARL("Carl");
 
     public String getName() {

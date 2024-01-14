@@ -1,15 +1,19 @@
 package Humans;
 
 import Actions.*;
+import Coordinates.Coordinates;
+import Coordinates.Map;
 import Objects.Items.Items;
 import Objects.Pit;
 
 public class Luis extends Human implements Tieing, Going, Looking, Trembling, Able_To_Hope, Able_To_Know {
     private Feelings feelings = Feelings.NORMAL;
+    private Coordinates coordinates;
     public Memory memory;
-    public Luis(Names name){
+    public Luis(Names name, int x, int y){
         super(name);
         memory = new Memory("Memory");
+        coordinates = Map.setCoordinatesOfObject(this, x, y);
     }
     public void setFeelings(Feelings feelings) {
         this.feelings = feelings;
