@@ -1,11 +1,11 @@
 package Objects;
 
-import Actions.Able_To_Stay;
 import Coordinates.Map;
 import Coordinates.Coordinates;
+import Places.Street;
 
 
-public class Sivik implements Able_To_Stay{
+public class Sivik {
     private String name;
     private Coordinates coordinates;
 
@@ -14,9 +14,11 @@ public class Sivik implements Able_To_Stay{
         coordinates = Map.setCoordinatesOfObject(this, x, y);
     }
 
-    @Override
-    public String toStay(String place) {
-        return "On the other side of the street stood his " + name + place + "\n";
+    public String toStay(String description, Street street) {
+//        for (int count = 0; count<street.getCoordinates().size(); count++) {
+//            if (street.getCoordinates().get(count).getX()==
+//        }
+        return "On the other side of the " + street + " stood his " + name + description + "\n";
         //OTHER OR THIS SIDE MUST BE ANALYSED BY USING THE COORDINATES
         //AND THEN THERE MUST BE LOCATION DEPENDENT OUTPUT
     }

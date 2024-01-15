@@ -1,6 +1,6 @@
 package Coordinates;
 
-public enum LongObjectRotation {
+public enum Rotation {
     VERTICAL,
     HORIZONTAL;
 }

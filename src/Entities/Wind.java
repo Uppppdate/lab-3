@@ -25,10 +25,11 @@ public class Wind implements Blowing, Rustling, Able_To_Force {
         if(strenght>=0&strenght<=3){
             return name + " blew lightly\n";
         }
-        if (strenght>3&strenght<=7){
+        if (strenght>3&strenght<=6){
             return name + " blew normally\n";
         }
-        if (strenght>7&strenght<=10) {
+        if (strenght>6&strenght<=10) {
+
             return name + " blew harder\n";
         }
         return null;

@@ -1,6 +1,6 @@
 package Places;
 import Coordinates.Coordinates;
-import Coordinates.LongObjectRotation;
+import Coordinates.Rotation;
 import Coordinates.Map;
 import java.util.ArrayList;
 
@@ -8,9 +8,9 @@ public class Street {
     private String name;
     private ArrayList<Coordinates> coordinates = new ArrayList<Coordinates>();
 
-    public Street(String name, LongObjectRotation rotation, int x, int y, int length) {
+    public Street(String name, Rotation rotation, int x, int y, int length) {
         this.name = name;
-        if(rotation==LongObjectRotation.VERTICAL){
+        if(rotation== Rotation.VERTICAL){
             for (int a = 0; a<length; a++){
                 coordinates.add(Map.setCoordinatesOfObject(this, x+a,y));
             }
@@ -21,6 +21,11 @@ public class Street {
             }
         }
     }
+
+    public ArrayList<Coordinates> getCoordinates() {
+        return coordinates;
+    }
+
     public String getName() {
         return name;
     }

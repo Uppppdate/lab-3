@@ -1,10 +1,13 @@
 package Humans;
 
 import Actions.*;
-import Coordinates.Coordinates;
-import Coordinates.Map;
+import Coordinates.*;
+import Moving.Moving;
+import Moving.WayChecking;
+import Moving.IncorrectCoordinates;
 import Objects.Items.Items;
 import Objects.Pit;
+import Moving.Waiting;
 
 public class Luis extends Human implements Tieing, Going, Looking, Trembling, Able_To_Hope, Able_To_Know {
     private Feelings feelings = Feelings.NORMAL;
@@ -18,6 +21,11 @@ public class Luis extends Human implements Tieing, Going, Looking, Trembling, Ab
     public void setFeelings(Feelings feelings) {
         this.feelings = feelings;
     }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
     public void toTie(Items... items){
         System.out.printf("%s tied ", name);
         for (Items i: items){
@@ -26,11 +34,71 @@ public class Luis extends Human implements Tieing, Going, Looking, Trembling, Ab
         }
         System.out.println();
     }
-    public String toGo(String description){
-        return name + " went " + description + "\n";
-    }
-    public String toGo(String description, Object object){
-        return name + " went " + description + object + "\n";
+    public String toGo(Object object){
+        switch (WayChecking.checkWay(object)){
+            case 1:
+                try {
+                    Map.viewMap();
+                    Waiting.waitInSec(1);
+                    Map.mapUpdate(this, MapOptions.DELETE);
+                    Moving.makeStep(this.getCoordinates(), 0, 1);
+                    Map.mapUpdate(this, MapOptions.UPDATE);
+                    Map.viewMap();
+                    Waiting.waitInSec(1);
+                    Map.mapUpdate(this, MapOptions.DELETE);
+                    Moving.makeStep(this.getCoordinates(), 0, 2);
+                    Map.mapUpdate(this, MapOptions.UPDATE);
+                    Waiting.waitInSec(1);
+                    Map.viewMap();
+
+                } catch (IncorrectCoordinates e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            case 2:
+                try{
+                    Map.viewMap();
+                    Map.mapUpdate(this, MapOptions.DELETE);
+                    Waiting.waitInSec(1);
+                    Moving.makeStep(this.getCoordinates(), 1, 2);
+                    Map.mapUpdate(this, MapOptions.UPDATE);
+                    Map.viewMap();
+                    Waiting.waitInSec(1);
+                    Map.mapUpdate(this, MapOptions.DELETE);
+                    Moving.makeStep(this.getCoordinates(), 2, 2);
+                    Map.mapUpdate(this, MapOptions.UPDATE);
+                    Map.viewMap();
+                    Waiting.waitInSec(1);
+                }
+                catch (IncorrectCoordinates e){
+                    throw new RuntimeException(e);
+                }
+                break;
+            case 3:
+                try{
+                    Map.viewMap();
+                    Waiting.waitInSec(1);
+                    Map.mapUpdate(this, MapOptions.DELETE);
+                    Moving.makeStep(this.getCoordinates(), 3, 2);
+                    Map.mapUpdate(this, MapOptions.UPDATE);
+                    Map.viewMap();
+                    Waiting.waitInSec(1);
+                    Map.mapUpdate(this, MapOptions.DELETE);
+                    Moving.makeStep(this.getCoordinates(), 4, 2);
+                    Map.mapUpdate(this, MapOptions.UPDATE);
+                    Map.viewMap();
+                    Waiting.waitInSec(1);
+                }
+                catch (IncorrectCoordinates e){
+                    throw new RuntimeException(e);
+                }
+                break;
+        }
+//        if (object==null){
+//            return name + " went " + description + "\n";
+//        }
+//        return name + " went " + description + object + "\n";
+        return "";
     }
 
     public String toLook(Object obj, ViewDirections directions) {
@@ -48,9 +116,9 @@ public class Luis extends Human implements Tieing, Going, Looking, Trembling, Ab
                     return name + " looked at " + obj;
                 }
             }
-            else return name + " looked at " + obj + "\n";
+            else return name + " looked at " + obj + "\n\n";
         }
-        if (directions== ViewDirections.BEHIND){
+        if (directions == ViewDirections.BEHIND){
             if (feelings == Feelings.NORMAL)
                 return " look back \n";
             if (feelings == Feelings.HYPNOTIZED)
@@ -61,7 +129,7 @@ public class Luis extends Human implements Tieing, Going, Looking, Trembling, Ab
         }
         if (directions== ViewDirections.AWAY){
             feelings=Feelings.NORMAL;
-            return "finally " + name + " looked away with a slight sigh\n";
+            return "finally " + name + " looked away with a slight sigh\n\n";
         }
         return null;
     }
