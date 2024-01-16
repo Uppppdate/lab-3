@@ -1,9 +1,8 @@
 package Objects.Items;
 
-import Interfaces.BeNeeded;
 import Humans.Human;
 
-public class Flashlight extends Items implements BeNeeded{
+public class Flashlight extends Items {
     private boolean isNeeded;
     public Flashlight(String name){
         super(name);

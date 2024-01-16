@@ -1,5 +1,6 @@
 package Humans;
 
+import Entities.God;
 import Interfaces.Naming;
 import Interfaces.Saying;
 
@@ -20,7 +21,11 @@ public class Rachel extends Human implements Naming, Saying {
 
     @Override
     public String toSayTo(String description, Object obj) {
-        return null;
+        if(obj instanceof God){
+            return ((God)obj).getDescription();
+        }
+
+        return description;
     }
 }
 

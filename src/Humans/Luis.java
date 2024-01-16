@@ -6,7 +6,7 @@ import Entities.AgesOfGod;
 import Entities.God;
 import Moving.Moving;
 import Moving.WayChecking;
-import Moving.IncorrectCoordinates;
+import Objects.Exit;
 import Objects.Items.Items;
 import Objects.Pit;
 import Moving.Waiting;
@@ -138,6 +138,25 @@ public class Luis extends Human implements Tieing, Going, Looking, Trembling, Ab
     @Override
     public String toTremble(){
         return " and then " + name + " trembled\n";
+    }
+    public void toNeed(Exit exit){
+        exit.setBeNeeded(true);
+        try {
+            System.out.printf(toFindExit(exit));
+            exit.setBeNeeded(false);
+        }
+        catch (ExitNotFound exitNotFound){
+            System.err.printf(exitNotFound.getMessage());
+        }
+    }
+    private String toFindExit(Exit exit) throws ExitNotFound {
+        if (Math.random()<0.5){
+            exit.setFound(true);
+            return "exit found \n";
+        }
+        else{
+            throw new ExitNotFound("exit not found \n");
+        }
     }
     @Override
     public String toHope(){
