@@ -1,5 +1,6 @@
 package Main;
 
+import Coordinates.Coordinates;
 import Entities.*;
 import Coordinates.Rotation;
 import Coordinates.Map;
@@ -11,6 +12,7 @@ import Places.Street;
 
 public class Main{
             public static void main(String[] args) {
+
         //Объявление объектов
         Luis Luis = new Luis(Names.LUIS, 0, 0);
         Carl Carl = new Carl(Names.CARL);
@@ -18,7 +20,6 @@ public class Main{
         Trees trees = new Trees("trees ", Rotation.HORIZONTAL, 1, 0, 2);
         Flashlight flashlight = new Flashlight("flashlight", false);
         Gloves gloves = new Gloves("gloves");
-//        Gloves gloves2 = new Gloves("gloves");
         Pickaxe pickaxe = new Pickaxe("pickaxe");
         Shovel showel = new Shovel("showel");
         Sivik sivik = new Sivik("sivik ", 0, 5);
@@ -29,28 +30,30 @@ public class Main{
         Pit pit = new Pit("pit   ", 2, 1);
         piles.putIn(pit);
         People people = new People("People");
-        Oz oz = new Oz("Oz");
+        God oz = new God("Oz", AgesOfGod.ANCIENT);
+        God christian = new God("Chrisian", AgesOfGod.MIDDLE);
         Rachel Rachel = new Rachel(Names.RACHEL);
         Exit exit = new Exit("Exit");
         Crypta crypta = new Crypta("crypta", 4, 1);
         Coffin coffin = new Coffin("coffin");
         Street street = new Street("street", Rotation.VERTICAL, 0, 4, 7);
+
         //Сюжет
         if(Luis.getCoordinates().getX()==0&Luis.getCoordinates().getY()==0){
                 System.out.print(wind.toBlow() + wind.toRustle(trees) + wind.toForce(Luis));
         }
         Waiting.waitInSec(1);
         Luis.toTie(showel, pickaxe, gloves, flashlight);
-        System.out.println(flashlight.beNeeded(Luis));
+        System.out.printf(flashlight.beNeeded(Luis));
         Waiting.waitInSec(1);
         Luis.toGo(ironFence1);
-        System.out.print(sivik.toStay(". So close and so far away.", street) + Luis.toLook(sivik, ViewDirections.STRAIGHT));
+        System.out.printf(sivik.toStay(". So close and so far away.", street) + Luis.toLook(sivik, ViewDirections.STRAIGHT));
         Waiting.waitInSec(1);
         Luis.toGo(gates);
-        System.out.print(Luis.toLook(pit, ViewDirections.STRAIGHT) +
+        System.out.printf(Luis.toLook(pit, ViewDirections.STRAIGHT) +
         piles.toLie(pit));
         Waiting.waitInSec(1);
-        System.out.print("\"My God. Not really. These are offerings to a god much more ancient than the Christian one...\"\n");
+        System.out.printf(Luis.toSay("\"My God. Not really. \n", oz, christian));
         System.out.print(people.toName(oz, "by different names "));
         System.out.print(Rachel.toName(oz, " correctly"));
         System.out.print(Rachel.toSay("Oz the Great and Terrifying, god of the dead, remaining dead, god of rotting flowers in the drainage hole, god of Mystery"));
@@ -67,12 +70,5 @@ public class Main{
         Waiting.waitInSec(1);
         System.out.print(Luis.toKnow(people));
         System.out.print(Carl.toSayTo(": \"Everything balances out\"\n", Luis));
-//      System.out.println(gloves.equals(gloves2));
-
     }
 }
-
-
-
-
-

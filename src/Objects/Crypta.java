@@ -1,6 +1,6 @@
 package Objects;
 
-import Actions.Looming;
+import Interfaces.Looming;
 import Coordinates.Coordinates;
 import Coordinates.Map;
 

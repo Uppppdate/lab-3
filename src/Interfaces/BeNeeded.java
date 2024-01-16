@@ -1,4 +1,4 @@
-package Actions;
+package Interfaces;
 
 import Humans.Human;
 

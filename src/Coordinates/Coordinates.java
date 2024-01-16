@@ -28,11 +28,10 @@ public class Coordinates {
         return "x = " + coordinates.getX() + " y = " + coordinates.getY();
     }
     public static String getObjectCoordinates(ArrayList<Coordinates> coordinates){
-        String result;
+        String result = "";
         for (int a = 0; a<coordinates.size(); a++){
-            result = "x = " + coordinates.get(a).getX() + " y = " + coordinates.get(a).getY();
-            return result;
+            result += "x = " + coordinates.get(a).getX() + " y = " + coordinates.get(a).getY()+"\n";
         }
-        return null;
+        return result;
     }
 }

@@ -1,4 +1,4 @@
-package Actions;
+package Interfaces;
 
 public interface Saying {
     String toSay(String description);

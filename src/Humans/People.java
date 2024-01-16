@@ -1,6 +1,6 @@
 package Humans;
 
-import Actions.Naming;
+import Interfaces.Naming;
 
 public class People implements Naming {
     private String name;
@@ -14,6 +14,6 @@ public class People implements Naming {
     }
 
     public String toName(Object obj, String description){
-        return name + " called " + obj + " " + description;
+        return "\n" +name + " called " + obj + " " + description;
     }
 }

@@ -1,8 +1,8 @@
 package Entities;
 
-import Actions.Able_To_Force;
-import Actions.Blowing;
-import Actions.Rustling;
+import Interfaces.Able_To_Force;
+import Interfaces.Blowing;
+import Interfaces.Rustling;
 import Humans.ViewDirections;
 import Humans.Feelings;
 import Humans.Human;
@@ -12,23 +12,23 @@ import java.lang.Math;
 
 public class Wind implements Blowing, Rustling, Able_To_Force {
 
-    private int strenght;
+    private int strength;
     private String name;
     public Wind(String name){
         this.name=name;
-        setStrenght();
+        setStrength();
     }
-    private void setStrenght() {
-        this.strenght=(int)(Math.random() * ((10) + 1));
+    private void setStrength() {
+        this.strength=(int)(Math.random() * ((10) + 1));
     }
     public String toBlow(){
-        if(strenght>=0&strenght<=3){
+        if(strength>=0&strength<=3){
             return name + " blew lightly\n";
         }
-        if (strenght>3&strenght<=6){
+        if (strength>3&strength<=6){
             return name + " blew normally\n";
         }
-        if (strenght>6&strenght<=10) {
+        if (strength>6&strength<=10) {
 
             return name + " blew harder\n";
         }

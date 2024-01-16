@@ -8,8 +8,6 @@ public class Map {
     private static int[][] map = new int[7][7];
     private static ArrayList<Object> objectArrayList = new ArrayList<Object>();
     private static boolean isObject;
-    public static final String DELETE = "DELETE";
-    public static final String UPDATE = "UPDATE";
     public static Coordinates setCoordinatesOfObject(Object obj, int x, int y) {
         map[x][y] = obj.hashCode();
         if(!objectArrayList.contains(obj)){
@@ -35,6 +33,9 @@ public class Map {
         System.out.println("\n");
     }
     public static void mapUpdate(Object object, MapOptions option){
+        if(object==null){
+            return;
+        }
         if(option==MapOptions.DELETE){
             deleteData(object);
         }

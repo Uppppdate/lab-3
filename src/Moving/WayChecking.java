@@ -5,7 +5,6 @@ import Objects.Iron_Fence;
 
 
 public class WayChecking {
-    private static int count=0;
     public static short checkWay(Object obj){
         if (obj instanceof Iron_Fence){
             return 1;

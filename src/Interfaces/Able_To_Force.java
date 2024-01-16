@@ -1,6 +1,5 @@
-package Actions;
+package Interfaces;
 
-import Humans.Carl;
 import Humans.Human;
 
 public interface Able_To_Force {

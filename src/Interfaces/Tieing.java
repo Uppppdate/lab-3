@@ -1,4 +1,4 @@
-package Actions;
+package Interfaces;
 
 import Objects.Items.Items;
 

@@ -1,7 +1,7 @@
 package Objects;
 
-import Actions.Lying;
-import Objects.Pit;
+import Interfaces.Lying;
+
 public class Piles_Of_Flowers implements Lying {
     private String name;
     public Piles_Of_Flowers(String name) {

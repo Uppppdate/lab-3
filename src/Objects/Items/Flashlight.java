@@ -1,6 +1,6 @@
 package Objects.Items;
 
-import Actions.BeNeeded;
+import Interfaces.BeNeeded;
 import Humans.Human;
 
 public class Flashlight extends Items implements BeNeeded{
@@ -14,9 +14,9 @@ public class Flashlight extends Items implements BeNeeded{
     }
     public String beNeeded(Human human){
         if(isNeeded){
-            return getName() + " might need and " + human.getName() + " decided to use it\n";
+            return getName() + " might need and " + human.getName() + " decided to use it\n\n";
         }
-        else return getName() + " might need but "+human.getName()+" out of caution decided to do without it\n";
+        else return getName() + " might need but "+human.getName()+" out of caution decided to do without it\n\n";
     }
 
 

@@ -1,6 +1,6 @@
 package Objects;
 
-import Actions.BeNeeded;
+import Interfaces.BeNeeded;
 import Humans.Human;
 
 public class Exit implements BeNeeded{

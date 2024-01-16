@@ -1,6 +1,6 @@
 package Humans;
 
-import Actions.Saying;
+import Interfaces.Saying;
 
 public class Carl extends Human implements Saying {
     public Carl(Names name){

@@ -1,7 +1,7 @@
 package Humans;
 
-import Actions.Naming;
-import Actions.Saying;
+import Interfaces.Naming;
+import Interfaces.Saying;
 
 public class Rachel extends Human implements Naming, Saying {
     public Rachel(Names name) {

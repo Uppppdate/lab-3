@@ -1,7 +1,9 @@
 package Humans;
 
-import Actions.*;
+import Interfaces.*;
 import Coordinates.*;
+import Entities.AgesOfGod;
+import Entities.God;
 import Moving.Moving;
 import Moving.WayChecking;
 import Moving.IncorrectCoordinates;
@@ -37,67 +39,39 @@ public class Luis extends Human implements Tieing, Going, Looking, Trembling, Ab
     public String toGo(Object object){
         switch (WayChecking.checkWay(object)){
             case 1:
-                try {
-                    Map.viewMap();
-                    Waiting.waitInSec(1);
+                Map.viewMap();
+                Waiting.waitInSec(1);
+                for (int steps = 0; steps<2; steps++) {
                     Map.mapUpdate(this, MapOptions.DELETE);
-                    Moving.makeStep(this.getCoordinates(), 0, 1);
+                    Moving.makeStep(this.getCoordinates(), 0, 1 + steps);
                     Map.mapUpdate(this, MapOptions.UPDATE);
                     Map.viewMap();
                     Waiting.waitInSec(1);
-                    Map.mapUpdate(this, MapOptions.DELETE);
-                    Moving.makeStep(this.getCoordinates(), 0, 2);
-                    Map.mapUpdate(this, MapOptions.UPDATE);
-                    Waiting.waitInSec(1);
-                    Map.viewMap();
-
-                } catch (IncorrectCoordinates e) {
-                    throw new RuntimeException(e);
                 }
                 break;
             case 2:
-                try{
-                    Map.viewMap();
+                Map.viewMap();
+                Waiting.waitInSec(1);
+                for (int steps = 0; steps<2; steps++) {
                     Map.mapUpdate(this, MapOptions.DELETE);
-                    Waiting.waitInSec(1);
-                    Moving.makeStep(this.getCoordinates(), 1, 2);
+                    Moving.makeStep(this.getCoordinates(), 1 + steps, 2);
                     Map.mapUpdate(this, MapOptions.UPDATE);
                     Map.viewMap();
                     Waiting.waitInSec(1);
-                    Map.mapUpdate(this, MapOptions.DELETE);
-                    Moving.makeStep(this.getCoordinates(), 2, 2);
-                    Map.mapUpdate(this, MapOptions.UPDATE);
-                    Map.viewMap();
-                    Waiting.waitInSec(1);
-                }
-                catch (IncorrectCoordinates e){
-                    throw new RuntimeException(e);
                 }
                 break;
             case 3:
-                try{
                     Map.viewMap();
                     Waiting.waitInSec(1);
+                for (int steps = 0; steps<2; steps++) {
                     Map.mapUpdate(this, MapOptions.DELETE);
-                    Moving.makeStep(this.getCoordinates(), 3, 2);
+                    Moving.makeStep(this.getCoordinates(), 3 + steps, 2);
                     Map.mapUpdate(this, MapOptions.UPDATE);
                     Map.viewMap();
                     Waiting.waitInSec(1);
-                    Map.mapUpdate(this, MapOptions.DELETE);
-                    Moving.makeStep(this.getCoordinates(), 4, 2);
-                    Map.mapUpdate(this, MapOptions.UPDATE);
-                    Map.viewMap();
-                    Waiting.waitInSec(1);
-                }
-                catch (IncorrectCoordinates e){
-                    throw new RuntimeException(e);
                 }
                 break;
         }
-//        if (object==null){
-//            return name + " went " + description + "\n";
-//        }
-//        return name + " went " + description + object + "\n";
         return "";
     }
 
@@ -133,7 +107,34 @@ public class Luis extends Human implements Tieing, Going, Looking, Trembling, Ab
         }
         return null;
     }
-
+    public String toSay(String description, God god1, God god2){
+        if (god1.getAge()==AgesOfGod.ANCIENT){
+            if (god1.getAge()!=god2.getAge()) {
+                return description + "These are offerings to a god much more ancient than the " + god2.getName() + " ";
+            }
+            else {
+                return description + "These are offerings to a god as ancient as the " + god2.getName()+ " ";
+            }
+        }
+        if (god1.getAge()==AgesOfGod.MIDDLE){
+            if (god2.getAge()==AgesOfGod.MODERN){
+                return description + "These are offerings to a god much more ancient than the " + god1.getName()+ " ";
+            }
+            if(god2.getAge()==AgesOfGod.ANCIENT){
+                return description + "These are offerings to a god much less ancient than the " + god2.getName()+" ";
+            }
+            if (god2.getAge()==god1.getAge()){
+                return description + "These are offerings to a god as ancient as the " + god2.getName()+" ";
+            }
+        }
+        if (god1.getAge()==AgesOfGod.MODERN){
+            if (god2.getAge()==god1.getAge()){
+                return description + "These are offerings to a god much less ancient than the " + god2.getName()+ " ";
+            }
+            return description + "These are offerings to a god as ancient as the " + god2.getName()+" ";
+        }
+        return null;
+    }
     @Override
     public String toTremble(){
         return " and then " + name + " trembled\n";
@@ -150,6 +151,7 @@ public class Luis extends Human implements Tieing, Going, Looking, Trembling, Ab
     public String toString(){
         return name;
     }
+
     public class Memory {
         private String name;
         Memory(String name) {
