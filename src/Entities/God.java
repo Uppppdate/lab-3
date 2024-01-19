@@ -1,13 +1,14 @@
 package Entities;
 
 public class God {
-    private String name;
-    private AgesOfGod age;
-    private String description;
+    private final String name;
+    private final AgesOfGod age;
+    private final String description;
+
     public God(String name, AgesOfGod age, String description) {
         this.name = name;
         this.age = age;
-        this.description=description;
+        this.description = description;
     }
 
     public String getDescription() {
@@ -23,7 +24,7 @@ public class God {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.name;
     }
 

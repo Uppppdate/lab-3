@@ -1,18 +1,19 @@
 package Moving;
 
+import Interfaces.HavingCoordinate;
 import Objects.Gates;
-import Objects.Iron_Fence;
+import Objects.IronFence;
 
 
 public class WayChecking {
-    public static short checkWay(Object obj){
-        if (obj instanceof Iron_Fence){
+    public static short checkWay(HavingCoordinate obj) {
+        if (obj instanceof IronFence) {
             return 1;
         }
-        if (obj instanceof Gates){
+        if (obj instanceof Gates) {
             return 2;
         }
-        if (obj==null){
+        if (obj == null) {
             return 3;
         }
         return 0;

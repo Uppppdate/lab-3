@@ -2,16 +2,22 @@ package Objects;
 
 import Coordinates.Map;
 import Coordinates.Coordinates;
+import Interfaces.HavingCoordinate;
+import Interfaces.Visible;
 import Places.Street;
 
 
-public class Sivik {
-    private String name;
-    private Coordinates coordinates;
+public class Sivik implements HavingCoordinate, Visible {
+    private final String name;
+    private final Coordinates coordinates;
 
     public Sivik(String name, int x, int y) {
         this.name = name;
         coordinates = Map.setCoordinatesOfObject(this, x, y);
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
     }
 
     public String toStay(String description, Street street) {
@@ -21,7 +27,7 @@ public class Sivik {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.name;
     }
 }

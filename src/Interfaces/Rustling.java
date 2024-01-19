@@ -1,4 +1,5 @@
 package Interfaces;
+
 import Objects.Trees;
 
 public interface Rustling {

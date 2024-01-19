@@ -9,9 +9,10 @@ public enum Names {
         return name;
     }
 
-    private String name;
-    Names(String name){
-        this.name=name;
+    private final String name;
+
+    Names(String name) {
+        this.name = name;
     }
 
 }

@@ -3,5 +3,5 @@ package Interfaces;
 import Humans.ViewDirections;
 
 public interface Looking {
-    String toLook(Object obj, ViewDirections direction);
+    String toLook(Visible obj, ViewDirections direction);
 }

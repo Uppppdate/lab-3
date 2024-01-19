@@ -5,13 +5,14 @@ public class Coffin {
         return name;
     }
 
-    private String name;
+    private final String name;
 
     public Coffin(String name) {
         this.name = name;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return this.name;
     }
 }

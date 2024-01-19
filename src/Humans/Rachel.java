@@ -14,15 +14,11 @@ public class Rachel extends Human implements Naming, Saying {
         return "but only sister " + name + " called " + obj + description + "\n";
     }
 
-    @Override
-    public String toSay(String description) {
-        return description + "\n";
-    }
 
     @Override
     public String toSayTo(String description, Object obj) {
-        if(obj instanceof God){
-            return ((God)obj).getDescription();
+        if (obj instanceof God) {
+            return ((God) obj).getDescription();
         }
 
         return description;

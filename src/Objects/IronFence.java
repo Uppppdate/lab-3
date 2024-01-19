@@ -8,11 +8,11 @@ import Interfaces.Visible;
 
 import java.util.ArrayList;
 
-public class Trees implements HavingCoordinate, Visible {
+public class IronFence implements HavingCoordinate, Visible {
     private final String name;
     private final ArrayList<Coordinates> coordinates = new ArrayList<>();
 
-    public Trees(String name, Rotation rotation, int x, int y, int length) {
+    public IronFence(String name, Rotation rotation, int x, int y, int length) {
         this.name = name;
         if (rotation == Rotation.VERTICAL) {
             for (int a = 0; a < length; a++) {
@@ -29,8 +29,13 @@ public class Trees implements HavingCoordinate, Visible {
         return coordinates;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
         return name;
     }
+
 }

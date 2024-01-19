@@ -1,7 +1,7 @@
 package Humans;
 
-public class ExitNotFound extends Exception{
-    public ExitNotFound(String message){
+public class ExitNotFound extends RuntimeException {
+    public ExitNotFound(String message) {
         super(message);
     }
 }

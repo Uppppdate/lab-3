@@ -4,12 +4,14 @@ public enum ViewDirections {
     AWAY("away"),
     BEHIND("behind"),
     STRAIGHT("straight");
-    private String name;
+    private final String name;
+
     ViewDirections(String name) {
         this.name = name;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return name;
     }
 }

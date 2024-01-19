@@ -1,7 +1,7 @@
 package Objects;
 
 public class Exit {
-    private String name;
+    private final String name;
     private boolean beNeeded;
     private boolean isFound;
 
@@ -11,16 +11,16 @@ public class Exit {
 
     public void setBeNeeded(boolean beNeeded) {
         this.beNeeded = beNeeded;
-        if(beNeeded){
+        if (beNeeded) {
             System.out.printf("we had to find a way out \n");
         }
-        if(!beNeeded){
+        if (!beNeeded) {
             System.out.printf("no need to look for a way out anymore \n");
         }
     }
 
     public void setFound(boolean found) {
-        isFound=found;
+        isFound = found;
     }
 
     public boolean isBeNeeded() {
@@ -28,7 +28,7 @@ public class Exit {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return this.name;
     }
 
